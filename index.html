@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MONOPOLY GO! Strategy Guide · Dice, Events, Buildings &amp; Stickers</title>
+<meta name="description" content="A player-made MONOPOLY GO! strategy guide: dice management, event breakdowns, build order, shield/heist tactics, and sticker trading tips — updated regularly.">
+<meta property="og:title" content="MONOPOLY GO! Strategy Guide">
+<meta property="og:description" content="Where to spend your dice, how to read events, and how to build smarter — one page, kept current.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --felt:#0F5132;
+    --felt-dark:#0A3B26;
+    --cream:#F3E9D2;
+    --cream-dim:#E8DBB8;
+    --gold:#C9A227;
+    --brick:#B23A48;
+    --sky:#4A7FA0;
+    --orange:#D97B29;
+    --ink:#1C1810;
+    --ink-soft:#4A4335;
+    --radius:14px;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #156b41 0%, var(--felt) 45%, var(--felt-dark) 100%);
+    color:var(--cream);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,59,38,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:2px solid var(--gold);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:900; font-size:1.15rem;
+    color:var(--cream);
+    white-space:nowrap;
+  }
+  .brand .dot{
+    width:14px; height:14px; border-radius:4px; background:var(--gold);
+    box-shadow:0 0 0 2px var(--felt-dark);
+    transform:rotate(15deg);
+  }
+  nav.pills{display:flex; gap:8px; flex-wrap:wrap;}
+  nav.pills button{
+    font-size:0.82rem; font-weight:600; text-decoration:none;
+    padding:7px 12px; border-radius:20px;
+    border:1.5px solid rgba(243,233,210,0.25);
+    background:transparent;
+    color:var(--cream-dim);
+    cursor:pointer;
+    transition:all .18s ease;
+  }
+  nav.pills button:hover, nav.pills button:focus-visible{
+    border-color:var(--gold); color:var(--gold); outline:none;
+  }
+  nav.pills button, .btn{
+    appearance:none; -webkit-appearance:none; font-family:'Work Sans', sans-serif;
+  }
+  .search-box{position:relative; flex:0 0 auto;}
+  .search-box input{
+    width:190px; padding:8px 12px 8px 32px; border-radius:20px;
+    border:1.5px solid rgba(243,233,210,0.25); background:rgba(243,233,210,0.06);
+    color:var(--cream); font-size:0.85rem; font-family:'Work Sans', sans-serif;
+    transition:width .2s ease, border-color .2s ease;
+  }
+  .search-box input::placeholder{color:rgba(243,233,210,0.5);}
+  .search-box input:focus{
+    outline:none; border-color:var(--gold); width:230px; background:rgba(243,233,210,0.1);
+  }
+  .search-box svg{
+    position:absolute; left:10px; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; opacity:0.6; pointer-events:none;
+  }
+  .search-empty{
+    display:none; text-align:center; padding:60px 24px; color:var(--cream-dim);
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .search-empty.show{display:block;}
+
+  .hero{
+    padding:64px 24px 40px;
+    max-width:var(--maxw); margin:0 auto;
+    display:grid; grid-template-columns:1.3fr 0.9fr; gap:40px; align-items:center;
+  }
+  .go-tile{
+    background:var(--cream);
+    color:var(--ink);
+    border-radius:var(--radius);
+    padding:6px;
+    transform:rotate(-2deg);
+    box-shadow:0 24px 50px -20px rgba(0,0,0,0.6);
+  }
+  .go-tile-inner{
+    border:3px solid var(--ink);
+    border-radius:10px;
+    padding:22px 18px;
+    text-align:center;
+  }
+  .go-tile .eyebrow{
+    font-size:0.72rem; letter-spacing:0.14em; font-weight:700;
+    color:var(--brick); text-transform:uppercase;
+  }
+  .go-tile .go-word{
+    font-family:'Fraunces', serif; font-weight:900; font-size:3.2rem;
+    color:var(--brick); line-height:1; margin:6px 0;
+  }
+  .dice-row{display:flex; gap:10px; justify-content:center; margin-top:10px;}
+  .die{
+    width:34px; height:34px; background:var(--cream); border:2.5px solid var(--ink);
+    border-radius:7px; position:relative; transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+  }
+  .go-tile:hover .die{transform:rotate(340deg);}
+  .go-tile:hover .die:nth-child(2){transform:rotate(25deg);}
+  .die::before, .die::after, .die i{
+    content:''; position:absolute; width:5px; height:5px; border-radius:50%; background:var(--ink);
+  }
+  .die::before{top:6px; left:6px;}
+  .die::after{bottom:6px; right:6px;}
+  .die i{top:14px; left:14px;}
+
+  .hero-copy .eyebrow{
+    font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--gold);
+  }
+  .hero-copy h1{
+    font-size:clamp(2rem, 4.2vw, 3rem);
+    margin:12px 0 16px;
+    color:var(--cream);
+  }
+  .hero-copy h1 em{color:var(--gold); font-style:normal;}
+  .hero-copy p{color:var(--cream-dim); font-size:1.05rem; max-width:46ch;}
+  .cta-row{display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:10px; font-weight:700; font-size:0.95rem;
+    text-decoration:none; border:2px solid transparent; cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--gold); color:var(--ink); box-shadow:0 8px 20px -8px rgba(201,162,39,0.7);}
+  .btn-ghost{background:transparent; border-color:rgba(243,233,210,0.4); color:var(--cream);}
+
+  .stats{
+    max-width:var(--maxw); margin:0 auto 40px; padding:0 24px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+  }
+  .stat-card{
+    background:rgba(243,233,210,0.06);
+    border:1px solid rgba(243,233,210,0.15);
+    border-radius:var(--radius);
+    padding:16px;
+    text-align:center;
+  }
+  .stat-card .num{font-family:'Fraunces', serif; font-weight:800; font-size:1.6rem; color:var(--gold);}
+  .stat-card .label{font-size:0.78rem; color:var(--cream-dim); margin-top:4px;}
+
+  section.card-section{
+    max-width:var(--maxw); margin:0 auto 44px; padding:0 24px;
+  }
+  .section-panel{
+    background:var(--cream); color:var(--ink);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 20px 40px -24px rgba(0,0,0,0.55);
+    opacity:0; transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .section-panel.in-view{opacity:1; transform:translateY(0);}
+  .band{
+    padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    color:var(--cream);
+  }
+  .band h2{font-size:1.35rem; color:inherit;}
+  .band .tag{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    background:rgba(255,255,255,0.18); padding:4px 10px; border-radius:20px;
+  }
+  .band-gold{background:linear-gradient(120deg,var(--gold),#a9821c); color:var(--ink);}
+  .band-gold .tag{background:rgba(28,24,16,0.15);}
+  .band-brick{background:linear-gradient(120deg,var(--brick),#8c2b36);}
+  .band-sky{background:linear-gradient(120deg,var(--sky),#345f79);}
+  .band-orange{background:linear-gradient(120deg,var(--orange),#a85718);}
+  .band-felt{background:linear-gradient(120deg,#177047,var(--felt-dark));}
+  .band-ink{background:linear-gradient(120deg,#332c1f,var(--ink));}
+
+  .panel-body{padding:26px 24px 30px;}
+  .panel-body p.lead{color:var(--ink-soft); margin:0 0 18px; max-width:64ch;}
+
+  .stage-list{display:grid; gap:12px;}
+  .stage{
+    display:grid; grid-template-columns:auto 1fr; gap:14px;
+    padding:14px 16px; border-radius:10px; background:#fff; border:1px solid #e6dcc0;
+  }
+  .stage .badge{
+    font-family:'JetBrains Mono'; font-weight:700; font-size:0.75rem;
+    background:var(--felt); color:var(--cream); border-radius:8px;
+    padding:6px 10px; height:fit-content; white-space:nowrap;
+  }
+  .stage h3{font-size:1rem; margin-bottom:4px;}
+  .stage p{margin:0; font-size:0.92rem; color:var(--ink-soft);}
+
+  .tip-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+  .tip-card{background:#fff; border:1px solid #e6dcc0; border-radius:10px; padding:16px;}
+  .tip-card h3{font-size:0.98rem; margin-bottom:6px; color:var(--brick);}
+  .tip-card p{margin:0; font-size:0.9rem; color:var(--ink-soft);}
+  .callout{
+    margin-top:16px; padding:14px 16px; border-radius:10px;
+    background:#FBF3DD; border:1px dashed var(--gold); font-size:0.88rem; color:var(--ink-soft);
+  }
+
+  .calc-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .calc-input label{
+    display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px; color:var(--ink);
+  }
+  .calc-input input[type="number"]{
+    width:100%; padding:10px 12px; border-radius:8px; border:1.5px solid #dccfa4;
+    font-family:'JetBrains Mono'; font-size:1rem; margin-bottom:18px; background:#fff; color:var(--ink);
+  }
+  .slider-row{margin-bottom:16px;}
+  .slider-row .slider-head{display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:6px;}
+  .slider-row .slider-head strong{color:var(--ink);}
+  .slider-row .slider-head span{font-family:'JetBrains Mono'; color:var(--brick); font-weight:700;}
+  .slider-row input[type="range"]{width:100%; accent-color:var(--gold);}
+  .calc-total-warn{font-size:0.8rem; color:var(--brick); font-weight:600; min-height:16px;}
+  .calc-output{background:#fff; border:1px solid #e6dcc0; border-radius:10px; padding:18px;}
+  .calc-output h3{font-size:0.95rem; margin-bottom:14px;}
+  .out-row{display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #f0e8cf;}
+  .out-row:last-child{border-bottom:none;}
+  .out-row .out-label{font-size:0.88rem; color:var(--ink-soft);}
+  .out-row .out-val{font-family:'JetBrains Mono'; font-weight:700; font-size:1.05rem; color:var(--felt);}
+
+  .updated-at{font-size:0.78rem; color:var(--ink-soft); margin:-10px 0 16px;}
+  .filter-bar{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
+  .filter-btn{
+    font-size:0.8rem; font-weight:600; padding:6px 13px; border-radius:16px;
+    border:1.5px solid #dccfa4; background:#fff; color:var(--ink-soft);
+    cursor:pointer; transition:all .15s ease;
+  }
+  .filter-btn:hover{border-color:var(--sky); color:var(--sky);}
+  .filter-btn.active{background:var(--sky); border-color:var(--sky); color:#fff;}
+  .event-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .event-card{
+    background:#fff; border:1px solid #e6dcc0; border-radius:10px; padding:16px;
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .event-card.hidden{display:none;}
+  .event-card .etype{
+    font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--sky);
+  }
+  .event-card h3{font-size:0.98rem;}
+  .event-card p{margin:0; font-size:0.87rem; color:var(--ink-soft);}
+
+  .order-list{list-style:none; margin:0; padding:0; display:grid; gap:10px;}
+  .order-list li{
+    display:flex; gap:12px; align-items:flex-start;
+    background:#fff; border:1px solid #e6dcc0; border-radius:10px; padding:12px 14px;
+  }
+  .order-list .num{font-family:'JetBrains Mono'; font-weight:700; color:var(--orange); min-width:22px;}
+  .order-list strong{display:block; font-size:0.94rem;}
+  .order-list span{font-size:0.87rem; color:var(--ink-soft);}
+
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .duo-col{background:#fff; border:1px solid #e6dcc0; border-radius:10px; padding:18px;}
+  .duo-col h3{font-size:1.02rem; margin-bottom:10px;}
+  .duo-col.attack h3{color:var(--brick);}
+  .duo-col.defense h3{color:var(--felt);}
+  .duo-col ul{margin:0; padding-left:18px; font-size:0.9rem; color:var(--ink-soft);}
+  .duo-col li{margin-bottom:6px;}
+
+  .sticker-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .sticker-card{background:#fff; border:1px solid #e6dcc0; border-radius:10px; padding:16px;}
+  .sticker-card h3{font-size:0.95rem; margin-bottom:6px;}
+  .sticker-card p{margin:0; font-size:0.87rem; color:var(--ink-soft);}
+
+  footer{text-align:center; padding:40px 24px 60px; color:var(--cream-dim); font-size:0.82rem;}
+  footer .fnote{margin-top:6px; opacity:0.7;}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr; padding-top:48px;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .tip-grid, .event-grid, .duo, .sticker-grid, .calc-grid{grid-template-columns:1fr;}
+    nav.pills{display:none;}
+    .search-box input, .search-box input:focus{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>MONOPOLY GO! Strategy Hub</div>
+    <nav class="pills">
+      <button type="button" data-target="start">Getting Started</button>
+      <button type="button" data-target="dice">Dice Strategy</button>
+      <button type="button" data-target="calc">Dice Planner</button>
+      <button type="button" data-target="events">Events</button>
+      <button type="button" data-target="build">Build Order</button>
+      <button type="button" data-target="pvp">Attack &amp; Defense</button>
+      <button type="button" data-target="stickers">Stickers</button>
+    </nav>
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="siteSearch" placeholder="Search, e.g. &quot;shield&quot;" autocomplete="off">
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">A practical guide, not a wall of ads</div>
+    <h1>Make every <em>roll</em> count</h1>
+    <p>MONOPOLY GO! throws a lot at you — events, shutdowns, landmarks, sticker albums. Most stuck players aren't unlucky, they're just spending dice on the wrong things. This guide breaks down where your dice, cash, and time should actually go.</p>
+    <div class="cta-row">
+      <button type="button" class="btn btn-primary" data-target="start">Start with the basics</button>
+      <button type="button" class="btn btn-ghost" data-target="dice">Jump to dice strategy</button>
+    </div>
+  </div>
+  <div class="go-tile">
+    <div class="go-tile-inner">
+      <div class="eyebrow">CORNER TILE</div>
+      <div class="go-word">GO!</div>
+      <div class="dice-row">
+        <div class="die"><i></i></div>
+        <div class="die"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat-card"><div class="num">7</div><div class="label">core guide sections</div></div>
+  <div class="stat-card"><div class="num">3</div><div class="label">board-progress stages</div></div>
+  <div class="stat-card"><div class="num">6</div><div class="label">common event types</div></div>
+  <div class="stat-card"><div class="num">MVP</div><div class="label">current build · updated often</div></div>
+</div>
+
+<div class="search-empty" id="searchEmpty">No matches — try a different keyword, like "dice," "shield," or "stickers."</div>
+
+<!-- Getting Started -->
+<section class="card-section" id="start">
+  <div class="section-panel">
+    <div class="band band-gold">
+      <h2>Getting Started · Board Stages</h2>
+      <span class="tag">Getting Started</span>
+    </div>
+    <div class="panel-body">
+      <p class="lead">A lot of new players use the same playbook from board 1 to board 20. In reality, priorities shift as new mechanics unlock. Knowing which stage you're in matters more than mastering any single trick.</p>
+      <div class="stage-list">
+        <div class="stage">
+          <span class="badge">Boards 1–4</span>
+          <div>
+            <h3>Learn the rhythm</h3>
+            <p>Complete property sets to build a baseline income, get comfortable with Shutdowns and Bank Heists, and start checking the event calendar daily until it's a habit.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Mid boards</span>
+          <div>
+            <h3>Start being deliberate</h3>
+            <p>Stop spending dice on autopilot — save them for high-multiplier events. Start following sticker trading groups; trading beats grinding for rare stickers most of the time.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Late game / Landmarks</span>
+          <div>
+            <h3>Concentrate resources</h3>
+            <p>Once Landmarks, Peg-E, and Partner Events unlock, the strategy shifts from "steady growth" to "stack resources for key events." Shields and defense matter a lot more here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dice Strategy -->
+<section class="card-section" id="dice">
+  <div class="section-panel">
+    <div class="band band-brick">
+      <h2>Dice Strategy</h2>
+      <span class="tag">Dice Strategy</span>
+    </div>
+    <div class="panel-body">
+      <p class="lead">Dice are the scarcest resource in the game — how you save and spend them decides your pace more than anything else.</p>
+      <div class="tip-grid">
+        <div class="tip-card">
+          <h3>Where free dice come from</h3>
+          <p>Daily login rewards, dice sent by friends, and community-shared free dice links are all steady sources — make claiming them a daily habit.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Don't spend on autopilot</h3>
+          <p>Jumping into every event as it appears burns dice on low-value moments. Check the multiplier and the deadline before deciding to spend now.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Save for high multipliers</h3>
+          <p>Double/multi-reward events have a much better payoff. For big upcoming events, start stockpiling a few days ahead so you can go all-in during the window.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Trade dice with friends</h3>
+          <p>A bigger friends list means more dice gifts coming in. Active player groups or clubs make gifting back and forth the cheapest source of extra dice.</p>
+        </div>
+      </div>
+      <div class="callout">💡 Tip: free dice links change daily. Pick one or two trustworthy community sources and stick with them instead of hunting around every time.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Dice Planner -->
+<section class="card-section" id="calc">
+  <div class="section-panel">
+    <div class="band band-gold">
+      <h2>Dice Allocation Planner</h2>
+      <span class="tag">Dice Planner</span>
+    </div>
+    <div class="panel-body">
+      <p class="lead">Enter how many dice you have on hand, then drag the three sliders to set a split. The planner works out how many dice go where.</p>
+      <div class="calc-grid">
+        <div class="calc-input">
+          <label for="totalDice">Dice on hand</label>
+          <input type="number" id="totalDice" value="500" min="0" step="10">
+
+          <div class="slider-row">
+            <div class="slider-head"><strong>Live events</strong><span id="evPct">50%</span></div>
+            <input type="range" id="evSlider" min="0" max="100" value="50">
+          </div>
+          <div class="slider-row">
+            <div class="slider-head"><strong>Building upgrades</strong><span id="buPct">30%</span></div>
+            <input type="range" id="buSlider" min="0" max="100" value="30">
+          </div>
+          <div class="slider-row">
+            <div class="slider-head"><strong>PvP reserve</strong><span id="pvPct">20%</span></div>
+            <input type="range" id="pvSlider" min="0" max="100" value="20">
+          </div>
+          <div class="calc-total-warn" id="calcWarn"></div>
+        </div>
+
+        <div class="calc-output">
+          <h3>Suggested split</h3>
+          <div class="out-row"><span class="out-label">🎯 Put toward live events</span><span class="out-val" id="outEvent">0</span></div>
+          <div class="out-row"><span class="out-label">🏗️ Put toward building upgrades</span><span class="out-val" id="outBuild">0</span></div>
+          <div class="out-row"><span class="out-label">🛡️ Keep as PvP reserve</span><span class="out-val" id="outPvp">0</span></div>
+          <div class="callout" style="margin-top:16px;">These ratios are just a starting point — push "Live events" to 60%+ ahead of a big event, or shift more back to "Building upgrades" during quiet stretches.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Events -->
+<section class="card-section" id="events">
+  <div class="section-panel">
+    <div class="band band-sky">
+      <h2>Event Guide</h2>
+      <span class="tag">Live Events</span>
+    </div>
+    <div class="panel-body">
+      <p class="lead">New limited-time events show up almost daily, each with its own rhythm. Here are the most common types — always check in-game for exact timing and rewards.</p>
+      <div class="updated-at mono" id="eventsUpdated">Updated —</div>
+      <div class="filter-bar" id="eventFilters"></div>
+      <div class="event-grid" id="eventGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Build Order -->
+<section class="card-section" id="build">
+  <div class="section-panel">
+    <div class="band band-orange">
+      <h2>Building &amp; Property Strategy</h2>
+      <span class="tag">Build Order</span>
+    </div>
+    <div class="panel-body">
+      <p class="lead">Upgrade order directly affects your cash flow and how much you lose to a Shutdown — don't max out the first building you see.</p>
+      <ol class="order-list">
+        <li>
+          <span class="num">01</span>
+          <div><strong>Finish property sets first</strong><span>Completing a set unlocks bonus rewards, which usually beats maxing a single building.</span></div>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <div><strong>Upgrade low-level buildings first</strong><span>Low-level upgrades cost less cash and return a better ratio than pushing one building to the top.</span></div>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <div><strong>Watch your Shutdown exposure</strong><span>Higher-level buildings are juicier targets for Shutdowns — spread your upgrades instead of stacking them all in one place.</span></div>
+        </li>
+        <li>
+          <span class="num">04</span>
+          <div><strong>Shift into Landmarks late-game</strong><span>Once unlocked, Landmarks often out-earn further property stacking, so it's fine to lean resources that way.</span></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- Attack & Defense -->
+<section class="card-section" id="pvp">
+  <div class="section-panel">
+    <div class="band band-felt">
+      <h2>Attack &amp; Defense</h2>
+      <span class="tag">Attack &amp; Defense</span>
+    </div>
+    <div class="panel-body">
+      <p class="lead">Shutdowns and Bank Heists are the most direct way players interact with each other — play both sides on purpose.</p>
+      <div class="duo">
+        <div class="duo-col attack">
+          <h3>⚔️ Attacking</h3>
+          <ul>
+            <li>Target high-level buildings with a full cash stash — the payoff is bigger.</li>
+            <li>Active friends usually have higher-level buildings, so they're worth checking first.</li>
+            <li>Check for a shield before a Bank Heist attempt so you don't waste dice on a dud.</li>
+          </ul>
+        </div>
+        <div class="duo-col defense">
+          <h3>🛡️ Defending</h3>
+          <ul>
+            <li>Save shields for moments you're sitting on a big, unspent cash pile.</li>
+            <li>Don't let cash sit around — spend it on upgrades or events so there's less to lose.</li>
+            <li>Spread upgrades across buildings instead of stacking everything into one high-level target.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stickers -->
+<section class="card-section" id="stickers">
+  <div class="section-panel">
+    <div class="band band-ink">
+      <h2>Sticker Strategy</h2>
+      <span class="tag">Sticker Album</span>
+    </div>
+    <div class="panel-body">
+      <p class="lead">Stickers are the long-term collection loop — completing an album pays off well, and trading almost always beats grinding for it.</p>
+      <div class="sticker-grid">
+        <div class="sticker-card">
+          <h3>Join a trading community</h3>
+          <p>Active sticker trading groups are the fastest way to land rare stickers — far more efficient than pulling packs alone.</p>
+        </div>
+        <div class="sticker-card">
+          <h3>Prioritize scarce stickers</h3>
+          <p>Common stickers duplicate easily. When trading, lock in the rare ones you're missing instead of spreading trades thin.</p>
+        </div>
+        <div class="sticker-card">
+          <h3>Trade hard near season end</h3>
+          <p>Trading picks up right before a sticker season closes, as players rush to clear duplicates — a good window to finish an album.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>MONOPOLY GO! Strategy Hub · Fan-made, unofficial content</div>
+  <div class="fnote">MONOPOLY GO! is a trademark of its respective owners. This site is not affiliated with or endorsed by Scopely or Hasbro. Currently in MVP — event data shown is illustrative; always confirm timing and rewards in-app.</div>
+</footer>
+
+<script>
+  const panels = document.querySelectorAll('.section-panel');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  panels.forEach(p=>io.observe(p));
+
+  /* ---------- Event data (kept separate from markup for easy daily updates) ---------- */
+  const EVENTS_UPDATED = 'Aug 7, 2026 · 9:00 AM ET';
+  const EVENTS = [
+    {type:'Racing', name:'Tycoon Racers', desc:'A race-style event against other players — fast-paced, best played in one focused burst.'},
+    {type:'Co-op', name:'Partner Event', desc:"Team up with a friend to push a shared score. Your partner's activity matters as much as yours, so line one up in advance."},
+    {type:'Ladder', name:'Prize Drop', desc:"Bank points to climb a reward ladder — later tiers pay off more, so plan how many dice waves you'll spend."},
+    {type:'Mini-game', name:'Peg-E', desc:'A pachinko-style mini-game that stacks odds with token drops — good for spending spare moments.'},
+    {type:'Tournament', name:'Timed Tournament', desc:'Short head-to-head scoring against random opponents. Rewards are strong but it burns dice fast.'},
+    {type:'Milestone', name:'Milestone Rewards', desc:'Unlocks rewards based on cumulative progress — steady play pays off here even without chasing first place.'},
+  ];
+
+  document.getElementById('eventsUpdated').textContent = `Updated ${EVENTS_UPDATED}`;
+
+  const eventGrid = document.getElementById('eventGrid');
+  const eventFilters = document.getElementById('eventFilters');
+  const allTypes = ['All', ...new Set(EVENTS.map(e=>e.type))];
+
+  function renderEvents(){
+    eventGrid.innerHTML = EVENTS.map(e => `
+      <div class="event-card" data-type="${e.type}">
+        <span class="etype">${e.type}</span>
+        <h3>${e.name}</h3>
+        <p>${e.desc}</p>
+      </div>`).join('');
+  }
+  function renderFilters(){
+    eventFilters.innerHTML = allTypes.map((t,i)=>
+      `<button class="filter-btn ${i===0?'active':''}" data-filter="${t}">${t}</button>`
+    ).join('');
+    eventFilters.querySelectorAll('.filter-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        eventFilters.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        eventGrid.querySelectorAll('.event-card').forEach(card=>{
+          card.classList.toggle('hidden', f !== 'All' && card.dataset.type !== f);
+        });
+      });
+    });
+  }
+  renderEvents();
+  renderFilters();
+
+  /* ---------- Site search ---------- */
+  const searchInput = document.getElementById('siteSearch');
+  const searchEmpty = document.getElementById('searchEmpty');
+  const searchableItems = () => document.querySelectorAll(
+    '.stage, .tip-card, .event-card, .order-list li, .duo-col li, .sticker-card'
+  );
+
+  searchInput.addEventListener('input', ()=>{
+    const q = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+    searchableItems().forEach(item=>{
+      const text = item.textContent.toLowerCase();
+      const match = q === '' || text.includes(q);
+      item.style.display = match ? '' : 'none';
+      if(match) visibleCount++;
+    });
+    document.querySelectorAll('.card-section').forEach(sec=>{
+      const hasSearchable = sec.querySelector(
+        '.stage, .tip-card, .event-card, .order-list li, .duo-col li, .sticker-card'
+      );
+      const anyVisible = [...sec.querySelectorAll(
+        '.stage, .tip-card, .event-card, .order-list li, .duo-col li, .sticker-card'
+      )].some(el => el.style.display !== 'none');
+      sec.style.display = (q !== '' && hasSearchable && !anyVisible) ? 'none' : '';
+    });
+    searchEmpty.classList.toggle('show', q !== '' && visibleCount === 0);
+  });
+
+  /* ---------- Dice allocation planner ---------- */
+  const totalDice = document.getElementById('totalDice');
+  const evSlider = document.getElementById('evSlider');
+  const buSlider = document.getElementById('buSlider');
+  const pvSlider = document.getElementById('pvSlider');
+  const evPct = document.getElementById('evPct');
+  const buPct = document.getElementById('buPct');
+  const pvPct = document.getElementById('pvPct');
+  const calcWarn = document.getElementById('calcWarn');
+  const outEvent = document.getElementById('outEvent');
+  const outBuild = document.getElementById('outBuild');
+  const outPvp = document.getElementById('outPvp');
+
+  function updateCalc(){
+    const total = Math.max(0, Number(totalDice.value) || 0);
+    const ev = Number(evSlider.value), bu = Number(buSlider.value), pv = Number(pvSlider.value);
+    const sum = ev + bu + pv;
+
+    evPct.textContent = ev + '%';
+    buPct.textContent = bu + '%';
+    pvPct.textContent = pv + '%';
+
+    calcWarn.textContent = sum !== 100
+      ? `Your three sliders add up to ${sum}%. Aim for 100% — figures below are scaled proportionally.`
+      : '';
+
+    const safeSum = sum || 1;
+    outEvent.textContent = Math.round(total * ev / safeSum);
+    outBuild.textContent = Math.round(total * bu / safeSum);
+    outPvp.textContent = Math.round(total * pv / safeSum);
+  }
+  [totalDice, evSlider, buSlider, pvSlider].forEach(el => el.addEventListener('input', updateCalc));
+  updateCalc();
+
+  /* ---------- Nav click handling (button-based, no href = no "external link" prompt) ---------- */
+  const navHeaderEl = document.querySelector('header.nav');
+  document.querySelectorAll('[data-target]').forEach(el => {
+    el.addEventListener('click', () => {
+      const target = document.getElementById(el.dataset.target);
+      if (!target) return;
+      const headerH = navHeaderEl ? navHeaderEl.offsetHeight : 0;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - headerH - 12;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
