@@ -349,6 +349,8 @@
       <button type="button" data-target="build">Build Order</button>
       <button type="button" data-target="pvp">Attack &amp; Defense</button>
       <button type="button" data-target="stickers">Stickers</button>
+      <button type="button" data-target="mistakes">Mistakes</button>
+      <button type="button" data-target="faq">FAQ</button>
     </nav>
     <div class="search-box">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -380,16 +382,14 @@
 </section>
 
 <div class="stats">
-  <div class="stat-card"><div class="num">7</div><div class="label">core guide sections</div></div>
+  <div class="stat-card"><div class="num">9</div><div class="label">core guide sections</div></div>
   <div class="stat-card"><div class="num">3</div><div class="label">board-progress stages</div></div>
   <div class="stat-card"><div class="num">6</div><div class="label">common event types</div></div>
-  <div class="stat-card"><div class="num">MVP</div><div class="label">current build · updated often</div></div>
+  <div class="stat-card"><div class="num">30+</div><div class="label">strategy tips, kept current</div></div>
 </div>
 
 <div class="search-empty" id="searchEmpty">No matches — try a different keyword, like "dice," "shield," or "stickers."</div>
 
-<!-- AD SLOT 1: replace inner div with your AdSense <ins class="adsbygoogle">...</ins> code once approved -->
-<div class="ad-slot"><div class="ad-slot-inner">Ad slot — top banner</div></div>
 
 <!-- Getting Started -->
 <section class="card-section" id="start">
@@ -509,15 +509,52 @@
     </div>
     <div class="panel-body">
       <p class="lead">New limited-time events show up almost daily, each with its own rhythm. Here are the most common types — always check in-game for exact timing and rewards.</p>
-      <div class="updated-at mono" id="eventsUpdated">Updated —</div>
-      <div class="filter-bar" id="eventFilters"></div>
-      <div class="event-grid" id="eventGrid"></div>
+      <div class="updated-at mono" id="eventsUpdated">Updated — Aug 7, 2026</div>
+      <div class="filter-bar" id="eventFilters">
+        <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="Racing">Racing</button>
+        <button class="filter-btn" data-filter="Co-op">Co-op</button>
+        <button class="filter-btn" data-filter="Ladder">Ladder</button>
+        <button class="filter-btn" data-filter="Mini-game">Mini-game</button>
+        <button class="filter-btn" data-filter="Tournament">Tournament</button>
+        <button class="filter-btn" data-filter="Milestone">Milestone</button>
+      </div>
+      <div class="event-grid" id="eventGrid">
+        <div class="event-card" data-type="Racing">
+          <span class="etype">Racing</span>
+          <h3>Tycoon Racers</h3>
+          <p>A race-style event against other players — fast-paced, best played in one focused burst. Save your dice for a few days before it opens so you can push through all stages in a single session.</p>
+        </div>
+        <div class="event-card" data-type="Co-op">
+          <span class="etype">Co-op</span>
+          <h3>Partner Event</h3>
+          <p>Team up with a friend to push a shared score. Your partner's activity matters as much as yours, so line up an active partner in advance — a quiet partner can cost you the full reward.</p>
+        </div>
+        <div class="event-card" data-type="Ladder">
+          <span class="etype">Ladder</span>
+          <h3>Prize Drop</h3>
+          <p>Bank points to climb a reward ladder. Later tiers pay off disproportionately more, so plan how many dice waves you'll need to hit your target tier before the timer runs out.</p>
+        </div>
+        <div class="event-card" data-type="Mini-game">
+          <span class="etype">Mini-game</span>
+          <h3>Peg-E</h3>
+          <p>A pachinko-style mini-game that stacks odds with token drops. Good for spending spare dice during quiet stretches, but don't burn your event reserve on it unless you're already set for the main events.</p>
+        </div>
+        <div class="event-card" data-type="Tournament">
+          <span class="etype">Tournament</span>
+          <h3>Timed Tournament</h3>
+          <p>Short head-to-head scoring against random opponents. Rewards are strong but dice burn fast — only join if you have enough saved to finish, otherwise the early rounds return very little.</p>
+        </div>
+        <div class="event-card" data-type="Milestone">
+          <span class="etype">Milestone</span>
+          <h3>Milestone Rewards</h3>
+          <p>Unlocks rewards based on cumulative progress across normal play — no extra dice needed. Steady daily play pays off here even without chasing first place, making it the most reliable event type.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- AD SLOT 2: replace inner div with your AdSense <ins class="adsbygoogle">...</ins> code once approved -->
-<div class="ad-slot"><div class="ad-slot-inner">Ad slot — mid-content</div></div>
 
 <!-- Build Order -->
 <section class="card-section" id="build">
@@ -608,10 +645,109 @@
   </div>
 </section>
 
+<!-- Common Mistakes -->
+<section class="card-section" id="mistakes">
+  <div class="section-panel">
+    <div class="band band-brick">
+      <h2>Common Mistakes — and What to Do Instead</h2>
+      <span class="tag">Mistakes</span>
+    </div>
+    <div class="panel-body">
+      <p class="lead">Most players plateau because of a handful of repeated mistakes, not because they're unlucky. Here are the ones we see most often, and the specific fix for each.</p>
+      <div class="stage-list">
+        <div class="stage">
+          <span class="badge">Mistake 1</span>
+          <div>
+            <h3>Rolling dice the moment you get them</h3>
+            <p>It feels productive to spend dice right away, but it's almost always a net loss over time. Dice have no value when spent outside a boosted window — a single 2x multiplier event can double your return on every roll. Get into the habit of letting your dice bank build up, then only tap it when you know there's an active multiplier or a high-value event running. Even waiting just 12–24 hours makes a meaningful difference.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Mistake 2</span>
+          <div>
+            <h3>Upgrading the wrong building first</h3>
+            <p>New players tend to upgrade whichever property they land on most, which is often a high-cost building that won't pay for itself for many boards. The better rule: always finish a full property set before pushing any single building to high tiers. Set completion bonuses are significant and unlock immediately, whereas individual building tiers pay out slowly. If you find yourself with 3 out of 4 properties on a set, get that last one — don't keep upgrading a random standalone.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Mistake 3</span>
+          <div>
+            <h3>Ignoring the friends list</h3>
+            <p>The single biggest free source of dice in the game is friend gifts, and most players have far fewer friends than they should. A full friends list (200 slots) generates dice daily just from the gift mechanic alone — no effort required beyond accepting them. Join at least one active trading community, swap friend codes regularly, and prune inactive accounts so you're not wasting slots. This alone can add several hundred dice per week for completely free.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Mistake 4</span>
+          <div>
+            <h3>Leaving cash exposed before logging off</h3>
+            <p>Shutdowns and Bank Heists target your cash and buildings while you're away. There's no reason to log off with a large, unspent cash pile — spend it on upgrades before you go, even if it means upgrading something you didn't have planned. You'll lose less value from a slightly early upgrade than from a successful Shutdown against a big target. If you can't spend it, use it on Peg-E tokens or quick event entries.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Mistake 5</span>
+          <div>
+            <h3>Grinding for stickers instead of trading</h3>
+            <p>Players who pull packs hoping to find rare stickers are running the slowest possible strategy. The rarest stickers have very low pack odds, so the expected number of packs you'd need is enormous. A single active trading group with 50–100 members will have someone who has what you need and wants what you have. Trading takes seconds; grinding takes weeks. Even if you only have commons to offer, they're valuable to the specific people who need them for a set.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="card-section" id="faq">
+  <div class="section-panel">
+    <div class="band band-felt">
+      <h2>Frequently Asked Questions</h2>
+      <span class="tag">FAQ</span>
+    </div>
+    <div class="panel-body">
+      <div class="stage-list">
+        <div class="stage">
+          <span class="badge">Q · A</span>
+          <div>
+            <h3>Is it better to save dice or spend them steadily?</h3>
+            <p>Save them for multipliers. A steady trickle of 100 dice per day spent on normal rolls gives you a baseline return, but the same 100 dice spent during a 2x or 3x event can yield double or triple the rewards. The one exception is if you're still on early boards where every roll advances your progression meaningfully regardless of multipliers — there, a balanced approach works fine.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Q · A</span>
+          <div>
+            <h3>Are free dice links legitimate?</h3>
+            <p>Some are. Scopely and community content creators occasionally share legitimate dice codes through official social channels. However, most websites claiming to offer "free dice generators" are clickbait or data-harvesting schemes. A legitimate dice link gives you a code that the game validates; it doesn't ask you to download anything or enter your login credentials. If a free-dice site asks for your account info, it's a scam.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Q · A</span>
+          <div>
+            <h3>How often does the event calendar reset?</h3>
+            <p>The event rotation is on an ongoing weekly cycle — there isn't a fixed monthly reset. Different event types recur on roughly a 5–7 day cycle, but they overlap and stagger, so there's almost always something active. The most important thing isn't memorising exact dates (those change) but learning to recognise the rhythm: when big events tend to cluster, when there are quiet gaps, and how to position your dice reserve ahead of known big windows.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Q · A</span>
+          <div>
+            <h3>What's the best way to find sticker trading partners?</h3>
+            <p>The fastest routes are dedicated Discord servers for MONOPOLY GO! and Facebook groups specifically for the game. Reddit's r/MonopolyGO also has a trading thread. When you join, post your code once and keep it updated — the most active players will reach out. Having a short list of "I need" and "I have" makes it much easier for others to match with you quickly, rather than just saying "anyone want to trade."</p>
+          </div>
+        </div>
+        <div class="stage">
+          <span class="badge">Q · A</span>
+          <div>
+            <h3>Do shields actually protect my cash?</h3>
+            <p>Yes, fully. While a shield is active, Bank Heist attempts against your account will fail automatically. The limitation is that shields have a timer — typically lasting a few hours — so you can't just activate one reactively when you see an attack coming. The strategic use is to activate one when you're sitting on cash you haven't had time to spend, such as before logging off at night or during a busy workday when you can't monitor your account.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div>MONOPOLY GO! Strategy Hub · Fan-made, unofficial content</div>
-  <div class="fnote">MONOPOLY GO! is a trademark of its respective owners. This site is not affiliated with or endorsed by Scopely or Hasbro. Currently in MVP — event data shown is illustrative; always confirm timing and rewards in-app.</div>
-  <div class="fnote"><a href="privacy-policy.html" style="color:var(--gold); text-decoration:underline;">Privacy Policy</a></div>
+  <div class="fnote">MONOPOLY GO! is a trademark of its respective owners. This site is not affiliated with or endorsed by Scopely or Hasbro. Event data shown is illustrative; always confirm timing and rewards in-app.</div>
+  <div class="fnote"><a href="about.html" style="color:var(--gold); text-decoration:underline; margin-right:16px;">About</a><a href="contact.html" style="color:var(--gold); text-decoration:underline; margin-right:16px;">Contact</a><a href="privacy-policy.html" style="color:var(--gold); text-decoration:underline;">Privacy Policy</a></div>
 </footer>
 
 <script>
@@ -624,47 +760,22 @@
   panels.forEach(p=>io.observe(p));
 
   /* ---------- Event data (kept separate from markup for easy daily updates) ---------- */
-  const EVENTS_UPDATED = 'Aug 7, 2026 · 9:00 AM ET';
-  const EVENTS = [
-    {type:'Racing', name:'Tycoon Racers', desc:'A race-style event against other players — fast-paced, best played in one focused burst.'},
-    {type:'Co-op', name:'Partner Event', desc:"Team up with a friend to push a shared score. Your partner's activity matters as much as yours, so line one up in advance."},
-    {type:'Ladder', name:'Prize Drop', desc:"Bank points to climb a reward ladder — later tiers pay off more, so plan how many dice waves you'll spend."},
-    {type:'Mini-game', name:'Peg-E', desc:'A pachinko-style mini-game that stacks odds with token drops — good for spending spare moments.'},
-    {type:'Tournament', name:'Timed Tournament', desc:'Short head-to-head scoring against random opponents. Rewards are strong but it burns dice fast.'},
-    {type:'Milestone', name:'Milestone Rewards', desc:'Unlocks rewards based on cumulative progress — steady play pays off here even without chasing first place.'},
-  ];
 
-  document.getElementById('eventsUpdated').textContent = `Updated ${EVENTS_UPDATED}`;
-
+  /* Filter wiring — event cards are static in HTML so crawlers can read them */
   const eventGrid = document.getElementById('eventGrid');
   const eventFilters = document.getElementById('eventFilters');
-  const allTypes = ['All', ...new Set(EVENTS.map(e=>e.type))];
 
-  function renderEvents(){
-    eventGrid.innerHTML = EVENTS.map(e => `
-      <div class="event-card" data-type="${e.type}">
-        <span class="etype">${e.type}</span>
-        <h3>${e.name}</h3>
-        <p>${e.desc}</p>
-      </div>`).join('');
-  }
-  function renderFilters(){
-    eventFilters.innerHTML = allTypes.map((t,i)=>
-      `<button class="filter-btn ${i===0?'active':''}" data-filter="${t}">${t}</button>`
-    ).join('');
-    eventFilters.querySelectorAll('.filter-btn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        eventFilters.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        eventGrid.querySelectorAll('.event-card').forEach(card=>{
-          card.classList.toggle('hidden', f !== 'All' && card.dataset.type !== f);
-        });
+  eventFilters.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      eventFilters.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      eventGrid.querySelectorAll('.event-card').forEach(card=>{
+        card.classList.toggle('hidden', f !== 'All' && card.dataset.type !== f);
       });
     });
-  }
-  renderEvents();
-  renderFilters();
+  });
+
 
   /* ---------- Site search ---------- */
   const searchInput = document.getElementById('siteSearch');
