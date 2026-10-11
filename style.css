@@ -321,6 +321,18 @@ section.card-section{
 }
 .page-hero p{color:var(--cream-dim); font-size:1.05rem; max-width:60ch; margin:0;}
 
+.byline{
+  margin:18px 0 0; padding:14px 16px; max-width:60ch;
+  border-left:3px solid var(--gold);
+  background:rgba(243,233,210,0.06); border-radius:0 10px 10px 0;
+  font-size:0.86rem; color:var(--cream-dim); line-height:1.55;
+}
+.byline strong{color:var(--cream); font-weight:600;}
+.byline a{color:var(--gold);}
+
+.updated-note{font-size:0.86rem; color:var(--cream-dim); margin:14px 0 0;}
+.updated-note a{color:var(--gold);}
+
 .related-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
 .related-card{
   background:rgba(243,233,210,0.06); border:1px solid rgba(243,233,210,0.18);
